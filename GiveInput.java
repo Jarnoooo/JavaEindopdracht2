@@ -11,8 +11,8 @@ package java2;
  */
 public interface GiveInput {
    
-    public void giveOutput(String output){
-       String x = output; 
+    public void giveOutput(String output);
         
-    }
+        
+    
 }

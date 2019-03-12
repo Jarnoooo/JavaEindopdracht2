@@ -50,7 +50,7 @@ public class Client {
             
         }
         else{
-            System.out.println(Interger.MIN_VALUE);
+            System.out.println(Integer.MIN_VALUE);
         }
         
     }

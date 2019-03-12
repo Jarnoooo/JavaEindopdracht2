@@ -9,13 +9,9 @@ package java2;
  *
  * @author Jarno
  */
-public class DisplayText extends ScreenElement implements OutputDevice {
+public interface OutputDevice {
+   
+    public void giveOutput(String Out);
     
-   public DisplayText (String element){
     
-    }
-   public void giveOutput(String out){
-       
-//       return null ;    
-   }
 }

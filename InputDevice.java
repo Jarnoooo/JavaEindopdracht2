@@ -12,9 +12,6 @@ package java2;
 public interface InputDevice {
 
 
-   public String getInput(){
-        
-    }
-    
-    
+   public String getInput();
+   
 }
