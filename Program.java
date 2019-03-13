@@ -17,7 +17,7 @@ public class Program {
     public static void main(String[] args) {
         // TODO code application logic here
         
-        Bank b = new Bank ();
+        ATM b = new ATM ();
         
     }
     

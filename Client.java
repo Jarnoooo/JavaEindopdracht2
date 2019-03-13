@@ -1,9 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package java2;
+
 import java.util.Map;
 import java.util.HashMap;
 
@@ -16,7 +12,13 @@ public class Client {
     private String name;
     private String pin;
     private int balance;
+    private int teller;
     private boolean nummer = false;
+    private boolean transactie = false;
+    
+    Map<String,Client> Account = new HashMap<String, Client>();
+    Account.put<"dada", NL3829>;
+
     
     public Client (String n, String p, int b){
         name = n;
@@ -32,16 +34,21 @@ public class Client {
     
     void checkPin(String p){
         
-        if ( name.equals(p) ){
-            nummer = true;
-            System.out.println("Pin geaccepteerd");
+        while (teller < 4){
+            if ( name.equals(p) ){
+                nummer = true;
+                System.out.println("Pin geaccepteerd");
+                teller = 0;
+            }
+            else
+            {
+              nummer = false;
+              System.out.println("vekeerde pin");
+              
+            }
         }
-        else
-        {
-          nummer = false;
-          System.out.println("vekeerde pin");
-          return ;
-        }
+        System.out.println("Te vaak verkeerde pin");
+        return ;
     }
     public void getBalance(String b){
         checkPin(b);
@@ -62,18 +69,18 @@ public class Client {
     }
     private void withdraw(int opnemen, String pin){
         checkPin(pin);
+            if (nummer == true){
         
-        int temp = balance - opnemen;
-        
-        if ((temp > 0)&& nummer == true){
-            balance = temp;
-            
-        }
-        else{
-           balance = temp + opnemen; 
-        }
-        
-    }
+            int temp = balance - opnemen; // CHECKS if the transaction is possible
 
-    
+            if ((temp > 0)&& nummer == true){
+                balance = temp;
+                transactie = true;
+            }
+            else{
+               balance = temp + opnemen; 
+               transactie = false;
+            }
+        }    
+    }
 }
