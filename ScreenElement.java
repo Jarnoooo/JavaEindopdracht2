@@ -5,25 +5,32 @@
  */
 package java2;
 
-import java.awt.Point;
+import java.awt.*;
 import java.awt.Container;
 /**
  *
  * @author Jarno
  */
 public abstract class ScreenElement extends ATMElement {
-    int pos = 0;
+
+    private Point pos ;
+    
 //    public Point()
 //    public Component ();
     
     
-   void ScreenElement (String element){
-       super.ATMElement ("screen") ;
+   void ScreenElement (String element, int xw, int yw ){
+       
+       Point point = new Point(xw,yw);
+       pos = point;
+       super.ATMElement (element) ;
        
    }
 
-   public abstract class setContainer {
+   public abstract cla
+       int x = 19;
+   }
+     
     
-    }
    
 }

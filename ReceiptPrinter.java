@@ -15,7 +15,7 @@ public class ReceiptPrinter extends HardwareElement implements OutputDevice{
         super.HardwareElement(name);
     }
       public void giveOutput(String out){
-       
+       System.out.println(out);
 //       return null ;    
    }
 }

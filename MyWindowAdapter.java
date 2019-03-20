@@ -6,18 +6,19 @@
 package java2;
 
 import java.awt.*;
+import java.awt.event.*;
 /**
  *
  * @author Jarno
  */
-public class ATMScreen extends java.awt.Container {
-        
-    
-    ATMScreen(){
-        super.setLayout(null);
-        
+public class MyWindowAdapter extends WindowAdapter {
+    Frame f;
+    public  MyWindowAdapter(Frame f){
+        this.f = f;
     }
-    public void add(ScreenElement s){
-     s.setContainer(this);   
+    public void windowClosing (WindowEvent e){
+        f.dispose();
+        
+        System.exit(0);
     }
 }

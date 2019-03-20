@@ -11,20 +11,21 @@ public class Client {
 
     private String name;
     private String pin;
+    
     private int balance;
     private int teller;
+    
     private boolean nummer = false;
     private boolean transactie = false;
     
-    Map<String,Client> Account = new HashMap<String, Client>();
-    Account.put<"dada", NL3829>;
+    
 
     
     public Client (String n, String p, int b){
         name = n;
         pin = p;
         balance = b;
-        
+               
     }
     
     public String getName(){

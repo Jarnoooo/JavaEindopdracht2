@@ -5,6 +5,9 @@
  */
 package java2;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Jarno
@@ -16,8 +19,9 @@ public class Program {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Bank a = new Bank();
         
-        ATM b = new ATM ();
+//        ATM b = new ATM ();
         
     }
     

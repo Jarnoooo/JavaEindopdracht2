@@ -5,10 +5,39 @@
  */
 package java2;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *
  * @author Jarno
  */
 public class Bank {
+    Map<String,Client> accounts = new HashMap<String, Client>();
     
+    public void Bank(){
+    
+    Client a = new Client("NL019021", "0989", 70);
+    Client b = new Client("NL673267", "6787", 0);
+    Client c = new Client("NL453234", "4523", 7678);
+   
+    accounts.put("ja", a);
+    accounts.put("joe", b);
+    accounts.put("Neee", c);
+    
+    }
+    public Client get(String rknmr){
+        
+        if (accounts.containsKey(rknmr)){       
+            System.out.println(accounts.get(rknmr));
+            return accounts.get(rknmr);
+        }else{
+            System.out.println("kan account niet vinden");
+            return null;
+        }
+        
+    }
 }
+
+   
+
