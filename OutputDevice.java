@@ -9,7 +9,8 @@ package java2;
  *
  * @author Jarno
  */
-public interface OutputDevice {
+public interface OutputDevice 
+{
    
     public void giveOutput(String Out);
     

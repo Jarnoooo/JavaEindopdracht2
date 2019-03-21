@@ -15,19 +15,25 @@ import java.util.logging.Logger;
  *
  * @author Jarno
  */
-public class CardReader extends HardwareElement implements InputDevice {
+public class CardReader extends HardwareElement implements InputDevice 
+{
     BufferedReader BR;
-    public CardReader(String name){
+    
+    public CardReader(String name)
+    {
         super.HardwareElement(name);
         InputStreamReader CardReader = new InputStreamReader(System.in);
         BufferedReader BR = new BufferedReader(CardReader);
     }
-    public String getInput(){
+    public String getInput()
+    {
         System.out.println("to simulate inserting card, enter card number");
-        try {
+        try 
+        {
             String userInput = BR.readLine();
             return userInput;
-        } catch (IOException ex) {
+        } catch (IOException ex) 
+        {
             Logger.getLogger(CardReader.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }

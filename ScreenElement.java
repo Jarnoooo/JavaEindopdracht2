@@ -11,26 +11,19 @@ import java.awt.Container;
  *
  * @author Jarno
  */
-public abstract class ScreenElement extends ATMElement {
-
-    private Point pos ;
-    
+public abstract class ScreenElement extends ATMElement
+{
+    Point pos ;  
 //    public Point()
 //    public Component ();
     
     
-   void ScreenElement (String element, int xw, int yw ){
-       
+   void ScreenElement (String element, int xw, int yw )
+   {
        Point point = new Point(xw,yw);
        pos = point;
-       super.ATMElement (element) ;
-       
+       super.ATMElement (element) ;    
    }
-
-   public abstract cla
-       int x = 19;
-   }
-     
-    
-   
-}
+   public abstract void setContainer(Container c);
+  
+    }

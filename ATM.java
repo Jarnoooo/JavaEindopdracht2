@@ -10,12 +10,14 @@ import java.awt.*;
  *
  * @author Jarno
  */
-public class ATM {
+public class ATM
+{
     
     private ATMScreen as;
     private Bank bank;
     
-    public ATM(Bank b){
+    public ATM(Bank b)
+    {
         bank = b;
         as = new ATMScreen();
         Frame f = new Frame("My ATM");
@@ -24,7 +26,5 @@ public class ATM {
         f.addWindowListener(new MyWindowAdapter(f));
         f.add(as);
         f.setVisible(true);
-    }
-   
-   
+    }  
 }

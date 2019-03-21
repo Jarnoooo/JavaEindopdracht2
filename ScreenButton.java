@@ -12,14 +12,16 @@ import java.awt.event.*;
  *
  * @author Jarno
  */
-public class ScreenButton extends ScreenElement implements InputDevice, ActionListener {
+public class ScreenButton extends ScreenElement implements InputDevice, ActionListener 
+{
     private boolean inputAvailable = false;
     private String buttonName;
     
     Button button ;
     Container d = new Container();
     
-    public ScreenButton(String name, int x, int y){
+    public ScreenButton(String name, int x, int y)
+    {
         super.ScreenElement(name, x, y);
         
         buttonName = name;
@@ -28,20 +30,26 @@ public class ScreenButton extends ScreenElement implements InputDevice, ActionLi
         button.addActionListener(this);
         
     }
-    public String getInput(){
+    public String getInput()
+    {
         
-        if (inputAvailable = true){
+        if (inputAvailable = true)
+        {
             inputAvailable = false;
             return name;
-        }else{
+        }
+        else
+        {
             return null;
         }
     }
-    public void setContainer(Container c){
-        d.add(button);
+    public void setContainer(Container c)
+    {
+        c.add(button);
     }
-    @Override
-    public void actionPerformed(ActionEvent e){
+    
+    public void actionPerformed(ActionEvent e)
+    {
         inputAvailable = true;
         getInput();
     }

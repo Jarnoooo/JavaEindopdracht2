@@ -15,26 +15,32 @@ import java.util.logging.Logger;
  *
  * @author Jarno
  */
-public class Keypad extends HardwareElement implements InputDevice {
+public class Keypad extends HardwareElement implements InputDevice
+{
     private String Keypad;
     BufferedReader BR ;
-    public void Keyad(String name){
-        
+    
+    public void Keyad(String name)
+    {   
         super.HardwareElement(name);
         InputStreamReader Keypad = new InputStreamReader(System.in);
         BufferedReader BR = new BufferedReader(Keypad);
     }
-    public String getInput(){
-    
-        try {
-            if(BR.ready()){
+    public String getInput()
+    {
+        try 
+        {
+            if(BR.ready())
+            {
                 String userInput = BR.readLine();   
                 Keypad = userInput;
             }
-        } catch (IOException ex) {
+        } 
+        catch (IOException ex) 
+        {
             Logger.getLogger(Keypad.class.getName()).log(Level.SEVERE, null, ex);
         }
         return Keypad;
-        }   
+    }   
 }
 

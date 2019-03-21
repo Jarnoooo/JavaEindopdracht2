@@ -1,28 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package java2;
-
-import java.util.HashMap;
-import java.util.Map;
-
+import java.awt.*;
 /**
  *
  * @author Jarno
  */
-public class Program {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        // TODO code application logic here
+public class Program 
+{
+    public static void main(String[] args) 
+    {
+        Container container = new Container();
         Bank a = new Bank();
         
-//        ATM b = new ATM ();
+        ScreenButton d = new ScreenButton("insert your card", 50,50);
+        DisplayText e = new DisplayText("insert you", 42,43);
         
+        d.setContainer(container);
+        ATM c = new ATM(a);        
     }
-    
 }

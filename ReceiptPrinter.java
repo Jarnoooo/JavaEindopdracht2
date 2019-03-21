@@ -9,13 +9,14 @@ package java2;
  *
  * @author Jarno
  */
-public class ReceiptPrinter extends HardwareElement implements OutputDevice{
-    public void ReceiptPrinter(String name){
-        
+public class ReceiptPrinter extends HardwareElement implements OutputDevice
+{
+    public void ReceiptPrinter(String name)
+    {  
         super.HardwareElement(name);
     }
-      public void giveOutput(String out){
+    public void giveOutput(String out)
+    {
        System.out.println(out);
-//       return null ;    
-   }
+    }
 }

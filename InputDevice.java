@@ -9,9 +9,7 @@ package java2;
  *
  * @author Jarno
  */
-public interface InputDevice {
-
-
-   public String getInput();
-   
+public interface InputDevice 
+{
+   public String getInput(); 
 }
