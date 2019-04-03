@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -19,7 +19,7 @@ public class Bank
     public Bank()
     {
     
-    Client a = new Client("NL019021", "0989", 70);
+    Client a = new Client("NL5555", "0989", 70);
     Client b = new Client("NL673267", "6787", 0);
     Client c = new Client("NL453234", "4523", 7678);
    
@@ -43,6 +43,12 @@ public class Bank
         }
         
     }
+    // method t
+            public boolean bestaat(String o){
+               boolean x = false;
+               x=  accounts.containsKey(o);
+               return x;
+            }
 }
 
    

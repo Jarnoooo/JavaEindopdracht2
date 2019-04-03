@@ -5,7 +5,7 @@
  */
 package java2;
 
-import java.awt.Container;
+import java.awt.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Label;
@@ -15,16 +15,16 @@ import java.awt.Label;
  */
 public class DisplayText extends ScreenElement implements OutputDevice
 {
-    private Label label;
+    Label label;
     
-    public DisplayText (String element, int x, int y)
+    public DisplayText (String element,Point p)
     {       
-        super.ScreenElement(element, x, y);
-        
-        Label label = new Label();
+        super(element,p);
+        //
+        label = new Label();
         label.setForeground(Color.white);
         label.setFont(new Font("SansSerif", Font.BOLD,30));
-        label.setBounds(pos.x, pos.y, 400,35);
+        label.setBounds(p.x, p.y, 400,35);
     }
    public void giveOutput(String out)
    {

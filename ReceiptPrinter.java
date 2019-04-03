@@ -11,9 +11,9 @@ package java2;
  */
 public class ReceiptPrinter extends HardwareElement implements OutputDevice
 {
-    public void ReceiptPrinter(String name)
+    public  ReceiptPrinter(String name)
     {  
-        super.HardwareElement(name);
+        super(name);
     }
     public void giveOutput(String out)
     {

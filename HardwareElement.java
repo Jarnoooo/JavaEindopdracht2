@@ -12,7 +12,7 @@ package java2;
 public abstract class HardwareElement extends ATMElement {
     boolean power = false;
     
-    public void HardwareElement(String name){
+    public HardwareElement(String name){
         super.ATMElement(name);
     }
    public void powerOn(){

@@ -20,9 +20,9 @@ public class Keypad extends HardwareElement implements InputDevice
     private String Keypad;
     BufferedReader BR ;
     
-    public void Keyad(String name)
+    public Keypad(String name)
     {   
-        super.HardwareElement(name);
+        super(name);
         InputStreamReader Keypad = new InputStreamReader(System.in);
         BufferedReader BR = new BufferedReader(Keypad);
     }
@@ -36,9 +36,9 @@ public class Keypad extends HardwareElement implements InputDevice
                 Keypad = userInput;
             }
         } 
-        catch (IOException ex) 
+        catch (Exception ex) 
         {
-            Logger.getLogger(Keypad.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
         }
         return Keypad;
     }   

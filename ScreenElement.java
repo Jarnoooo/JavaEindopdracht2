@@ -12,16 +12,14 @@ import java.awt.Container;
  * @author Jarno
  */
 public abstract class ScreenElement extends ATMElement
-{
-    Point pos ;  
+{  
 //    public Point()
 //    public Component ();
     
     
-   void ScreenElement (String element, int xw, int yw )
+  public ScreenElement(String element, Point p)
    {
-       Point point = new Point(xw,yw);
-       pos = point;
+       Point point = new Point(p);
        super.ATMElement (element) ;    
    }
    public abstract void setContainer(Container c);

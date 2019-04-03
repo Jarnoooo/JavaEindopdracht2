@@ -15,25 +15,23 @@ import java.awt.event.*;
 public class ScreenButton extends ScreenElement implements InputDevice, ActionListener 
 {
     private boolean inputAvailable = false;
-    private String buttonName;
     
-    Button button ;
+    Button button;
     Container d = new Container();
     
-    public ScreenButton(String name, int x, int y)
+    public ScreenButton(String name, Point p)
     {
-        super.ScreenElement(name, x, y);
+        super(name, p);
         
-        buttonName = name;
+    
         button = new Button(name);
-        button.setBounds(pos.x, pos.y,10 + 15 *name.length(), 25);
+        button.setBounds(p.x, p.y,10 + 15 *name.length(), 25);
         button.addActionListener(this);
         
     }
     public String getInput()
     {
-        
-        if (inputAvailable = true)
+        if (inputAvailable == true)
         {
             inputAvailable = false;
             return name;
@@ -51,6 +49,6 @@ public class ScreenButton extends ScreenElement implements InputDevice, ActionLi
     public void actionPerformed(ActionEvent e)
     {
         inputAvailable = true;
-        getInput();
+//        getInput();
     }
 }
