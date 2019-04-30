@@ -39,7 +39,7 @@ public class ATM {
     public ATM(Bank b) throws InterruptedException {
         bank = b;
         as = new ATMScreen();
-        Frame f = new Frame("My ATM");
+        Frame f = new Frame("ATM");
         f.setBounds(400, 400, 400, 400);
         f.setBackground(Color.BLUE);
         f.addWindowListener(new MyWindowAdapter(f));
@@ -53,7 +53,7 @@ public class ATM {
         displayText = new DisplayText("Display", new Point(0, 0));
         while(true){
         as.add(displayText);
-        displayText.giveOutput("Insert Your Card...");
+        displayText.giveOutput("Steek uw pas in de atm");
         CardReader cardReader = new CardReader("CardReader");
 
 
@@ -78,8 +78,8 @@ public class ATM {
         ScreenButton button50 = new ScreenButton("50", new Point(100, 70));
         ScreenButton button100 = new ScreenButton("100", new Point(20, 100));
         ScreenButton button200 = new ScreenButton("200", new Point(100, 100));
-        ScreenButton buttonYes = new ScreenButton("YES", new Point(30, 80));
-        ScreenButton buttonNo = new ScreenButton("NO", new Point(100, 80));
+        ScreenButton buttonJA = new ScreenButton("JA", new Point(30, 80));
+        ScreenButton buttonNEE = new ScreenButton("NEE", new Point(100, 80));
 //////////////////////////////////////////////////////////////////////////////////////////////////
         //toevoegen van alle knoppen aan bijbehorende arraylists
         KeypadButtons.add(button1);
@@ -98,8 +98,8 @@ public class ATM {
         CashAmmountButtons.add(button100);
         CashAmmountButtons.add(button200);
 ///////////////////////////////////////////////////////////////////////////////////////////////
-        RecieptButtons.add(buttonYes);
-        RecieptButtons.add(buttonNo);
+        RecieptButtons.add(buttonJA);
+        RecieptButtons.add(buttonNEE);
 /////////////////////////////////////////////////////////////////////////////////////////
             as.add(button1);
             as.add(button2);
@@ -136,8 +136,8 @@ public class ATM {
             as.add(button9);
             as.add(button0);
 ////////////////////////////////////////////////////////////////////////////
-            displayText.giveOutput("Enter Pin");
-            System.out.println("Enter Pin");
+            displayText.giveOutput("Voer uw pin in");
+            System.out.println("Voer uw pin in");
 
             try {
                 String X = "";
@@ -160,10 +160,11 @@ public class ATM {
                 //het weer opniew proberen. Dit gaat door totdat de gebruiker de juiste pin invoert.
                 while (!bank.get(cardNumber).checkPin(inputPin)) {
                     if (!bank.get(cardNumber).checkPin(inputPin)) {
-                        System.out.println("Incorrect pin, try again...");
-                        displayText.giveOutput("Incorrect Pin");
+                        System.out.println("Verkeerde pin.. Probeer opnieuw...");
+                        displayText.giveOutput("Incorrecte Pin");
                         TimeUnit.SECONDS.sleep(10);
                         displayText.giveOutput("");
+                        
                     }
                     inputPin = "";
                     X = "";
@@ -188,13 +189,13 @@ public class ATM {
             }
             //////////////////////////////////////////////////////////////////////////////////////////////
             bank.get(cardNumber);
-            System.out.println("You are logged in");
+            System.out.println("U bent ingelogd");
 
             //verwijdert alle vorige schermelementen
             as.clear();
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-            displayText.giveOutput("Choose amount: ");
+            displayText.giveOutput("Kies hier hoeveel u wil pinnen");
 
             //voegt nieuwe scherm elementen toe
             as.add(displayText);
@@ -203,7 +204,7 @@ public class ATM {
             as.add(button100);
             as.add(button200);
 
-            System.out.println("Enter an amount...");
+            System.out.println("Kies hoeveelheid...");
 
 
 //            System.out.println(userPin);
@@ -218,10 +219,10 @@ public class ATM {
                         System.out.println(UserWithdrawAmount);
 
                         if (Integer.parseInt(bank.get(cardNumber).getBalance(inputPin)) < WithdrawInt) {
-                            System.out.println("You do not have enough funds...");
+                            System.out.println("U heeft niet genoeg geld...");
                         } else if (Integer.parseInt(bank.get(cardNumber).getBalance(inputPin)) >= WithdrawInt) {
                             bank.get(cardNumber).withdraw(WithdrawInt, inputPin);
-                            System.out.println(Integer.parseInt(bank.get(cardNumber).getBalance(inputPin)));
+                            System.out.println(Integer.parseInt(bank.get(cardNumber).getBalance(inputPin)));    
                             transactionComplete = true;
                             inputPin = "";
                         }
@@ -229,11 +230,11 @@ public class ATM {
                 }
                 Thread.yield();
             }
-            System.out.println("Transaction Complete");
+            System.out.println("Transactie compleet");
             as.clear();
-            displayText.giveOutput("Do you want a receipt?");
-            as.add(buttonYes);
-            as.add(buttonNo);
+            displayText.giveOutput("Wil u het bonnetje");
+            as.add(buttonJA);
+            as.add(buttonNEE);
             as.add(displayText);
             DateTimeFormatter formatter = DateTimeFormatter.BASIC_ISO_DATE;
             String formattedDate = formatter.format(LocalDate.now());
@@ -242,24 +243,24 @@ public class ATM {
                     UserWantsRecieptCompare = i.getInput();
 
                     if (UserWantsRecieptCompare != null) {
-                        if (UserWantsRecieptCompare == "YES") {
+                        if (UserWantsRecieptCompare == "JA") {
                             as.clear();
                             System.out.println("////////////////////////");
-                            System.out.println("Date: " + formattedDate);
-                            System.out.println("Amount: " + WithdrawInt);
+                            System.out.println("Datum: " + formattedDate);
+                            System.out.println("Hoeveelheid: " + WithdrawInt);
                             System.out.println("/////////////////////////");
-                            displayText.giveOutput("Now dispensing $ " + WithdrawInt);
+                            displayText.giveOutput("Nu aan het pakken $ " + WithdrawInt);
                             as.add(displayText);
                             TimeUnit.SECONDS.sleep(4);
-                            displayText.giveOutput("Please Take Card & Cash");
+                            displayText.giveOutput("Neem uw geld en kaart uit de atm ");
                             TimeUnit.SECONDS.sleep(4);
                             UserWantsReciept = UserWantsRecieptCompare;
                         } else {
                             as.clear();
-                            displayText.giveOutput("Now dispensing $ " + WithdrawInt);
+                            displayText.giveOutput("Nu aan het pakken $ " + WithdrawInt);
                             as.add(displayText);
                             TimeUnit.SECONDS.sleep(4);
-                            displayText.giveOutput("Please Take Card & Cash");
+                            displayText.giveOutput("Neem uw geld en kaart uit de atm");
                             TimeUnit.SECONDS.sleep(4);
                             UserWantsReciept = UserWantsRecieptCompare;
                         }
@@ -269,8 +270,8 @@ public class ATM {
             }
 
             //Het process is verlopen. Na een delay van 4 seconden begint het process weer opnieuw
-            displayText.giveOutput("Goodbye");
-            System.out.println("Goodbye");
+            displayText.giveOutput("Tot ziens");
+            System.out.println("Tot ziens");
             as.add(displayText);
             TimeUnit.SECONDS.sleep(10);
             as.clear();

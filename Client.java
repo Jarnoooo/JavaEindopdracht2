@@ -80,7 +80,7 @@ public class Client
             if (nummer == true){
         
             int temp = balance - opnemen; // CHECKS if the transaction is possible
-
+            // haalt geld van account af
             if ((temp > 0)&& nummer == true){
                 balance = temp;
                 transactie = true;

@@ -32,7 +32,7 @@ public class Keypad extends HardwareElement implements InputDevice
         try 
         {
             if(BR.ready())
-            {
+            {   // checkt input
                 String userInput = BR.readLine();   
                 Keypad = userInput;
             }
