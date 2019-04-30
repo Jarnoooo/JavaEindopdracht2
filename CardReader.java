@@ -27,11 +27,21 @@ public class CardReader extends HardwareElement implements InputDevice {
 
     public String getInput() {
         System.out.println("Insert Card");
+        String x = "";
+        // MAGIC NUMBERS COMMENTEN
         try{
-            return BR.readLine();
+            if(x.length() == 5){
+            System.out.println(x);            
+            x = BR.readLine();
+            return x;
+         
+            }
         }
         catch(Exception e){
-            return null;
+            
+            return "NL555";
         }
+        return  x;
     }
 }
+

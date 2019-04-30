@@ -19,32 +19,25 @@ public class Bank
     public Bank()
     {
     
-    Client a = new Client("NL5555", "0989", 70);
-    Client b = new Client("NL673267", "6787", 0);
-    Client c = new Client("NL453234", "4523", 7678);
+    Client a = new Client("ja", "0123", 70);
+    Client b = new Client("nee", "0000", 0);
+    Client c = new Client("joee", "1111", 7678);
    
-    accounts.put("ja", a);
-    accounts.put("joe", b);
-    accounts.put("Neee", c);
+    accounts.put("NL555", a);
+    accounts.put("NL1234", b);
+    accounts.put("NL453", c);
     
     }
     public Client get(String rknmr)
     {
-        
-        if (accounts.containsKey(rknmr))
-        {       
-            System.out.println(accounts.get(rknmr));
-            return accounts.get(rknmr);
-        }
-        else
-        {
-            System.out.println("kan account niet vinden");
-            return null;
-        }
-        
+        return accounts.get(rknmr);
     }
-    // method t
-            public boolean bestaat(String o){
+    
+    public void foo(){
+        this.get("NL555").checkPin("1234");
+    }
+      
+    public boolean bestaat(String o){
                boolean x = false;
                x=  accounts.containsKey(o);
                return x;

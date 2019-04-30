@@ -32,45 +32,51 @@ public class Client
         return name;
     }
     
-    void checkPin(String p)
+    public boolean checkPin(String p)
     {
         
         while (teller < 4)
         {
-            if ( name.equals(p) ){
+            if ( pin.equals(p) ){
                 nummer = true;
                 System.out.println("Pin geaccepteerd");
                 teller = 0;
-            }
-            else
-            {
+                return true;
+                }
+                
               nummer = false;
               System.out.println("vekeerde pin");
-            }
+              return false;
+            } 
+        return false;
         }
-        System.out.println("Te vaak verkeerde pin");
         
-    }
-    public void getBalance(String b)
+    
+    public String getBalance(String b)
     {
         checkPin(b);
+        String result ;
         if (nummer == true)
         {
             System.out.println("Uw balans op de bank = "+balance);
-            
+            result = Integer.toString(balance);
+            return result;
         }
         else
         {
             System.out.println(Integer.MIN_VALUE);
+            result =  Integer.toString(Integer.MIN_VALUE);
+
+            return result;
         }
     }
     
-    private void deposit(int gestort)
+    public void deposit(int gestort)
     {
         balance = balance + gestort;
               
     }
-    private void withdraw(int opnemen, String pin)
+    public boolean withdraw(int opnemen, String pin)
     {
         checkPin(pin);
             if (nummer == true){
@@ -80,11 +86,14 @@ public class Client
             if ((temp > 0)&& nummer == true){
                 balance = temp;
                 transactie = true;
+//                return true;
             }
             else{
                balance = temp + opnemen; 
                transactie = false;
+//               return false;
             }
-        }    
+        }
+            return transactie;
     }
 }
