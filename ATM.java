@@ -208,9 +208,9 @@ public class ATM {
 
 
 //            System.out.println(userPin);
-
-            //zolang de gebruiker geen keuze maakt, zullen de keuzes op het scherm blijven.
-            //Als de gebruiker niet genoeg geld heeft, blijft er nog steeds worden gevraagd voor een keuze.
+            //Hier blijven alle elementen op het scherm totdat de gebruiker een keuze maakt.
+         
+          
             while (transactionComplete == false) {
                 for (InputDevice i : CashAmmountButtons) {
                     String UserWithdrawAmount = i.getInput();
@@ -276,7 +276,7 @@ public class ATM {
             TimeUnit.SECONDS.sleep(10);
             as.clear();
 
-            //Inloggegevens worden gewist voor veiligheidsredenen.
+            //Inloggegevens gewist voor nieuwe gebruiker
             cardNumber = "";
             inputPin = "";
             WithdrawInt = 0;
@@ -286,7 +286,7 @@ public class ATM {
             transactionComplete = false;
             
             inputPin ="";
-            transactionComplete = false;
+            transactionComplete = false;    
             WithdrawString="";
             WithdrawInt= 0;
             UserWantsReciept="";
