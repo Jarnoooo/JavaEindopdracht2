@@ -35,8 +35,6 @@ public class Client
     public boolean checkPin(String p)
     {
         
-        while (teller < 4)
-        {
             if ( pin.equals(p) ){
                 nummer = true;
                 System.out.println("Pin geaccepteerd");
@@ -48,8 +46,8 @@ public class Client
               System.out.println("vekeerde pin");
               return false;
             } 
-        return false;
-        }
+          
+        
         
     
     public String getBalance(String b)

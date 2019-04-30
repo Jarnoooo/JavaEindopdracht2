@@ -22,26 +22,25 @@ public class CardReader extends HardwareElement implements InputDevice {
     public CardReader(String name) {
         super(name);
         InputStreamReader CardReader = new InputStreamReader(System.in);
-        BufferedReader BR = new BufferedReader(CardReader);
+        BR = new BufferedReader(CardReader);
     }
 
     public String getInput() {
         System.out.println("Insert Card");
-        String x = "";
+       
         // MAGIC NUMBERS COMMENTEN
         try{
-            if(x.length() == 5){
-            System.out.println(x);            
-            x = BR.readLine();
+              
+            String x = BR.readLine();
+            
             return x;
          
-            }
-        }
+            } 
         catch(Exception e){
-            
-            return "NL555";
+//            return null;    
+            return null;
         }
-        return  x;
-    }
+       
+    }    
 }
 

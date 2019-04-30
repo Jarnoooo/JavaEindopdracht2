@@ -101,14 +101,25 @@ public class ATM {
         RecieptButtons.add(buttonYes);
         RecieptButtons.add(buttonNo);
 /////////////////////////////////////////////////////////////////////////////////////////
-
-
+            as.add(button1);
+            as.add(button2);
+            as.add(button3);
+            as.add(button4);
+            as.add(button5);
+            as.add(button6);
+            as.add(button7);
+            as.add(button8);
+            as.add(button9);
+            as.add(button0);
+            
+        
             try {
                 cardNumber = cardReader.getInput();
-                //laten wachten als het null is 
-                while (bank.get(cardNumber) != null) {
-                    System.out.println("That card number does not exist, try again...");
+                
+                while (bank.get(cardNumber) == null) {
+//                    System.out.println("That card number does not exist, try again...");
                     cardNumber = cardReader.getInput();
+                    System.out.println(cardNumber);
                 }
             } catch (NullPointerException e) {
                 e.printStackTrace();

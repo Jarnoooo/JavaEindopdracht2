@@ -19,7 +19,7 @@ public class Bank
     public Bank()
     {
     
-    Client a = new Client("ja", "0123", 70);
+    Client a = new Client("ja", "0123", 7000);
     Client b = new Client("nee", "0000", 0);
     Client c = new Client("joee", "1111", 7678);
    
@@ -30,13 +30,19 @@ public class Bank
     }
     public Client get(String rknmr)
     {
-        return accounts.get(rknmr);
+        System.out.println(accounts.get(rknmr));
+        if(accounts.containsKey(rknmr)){
+//            System.out.println("da "); 
+            return accounts.get(rknmr);
+        }else{
+       return null;
+    }
     }
     
-    public void foo(){
-        this.get("NL555").checkPin("1234");
-    }
-      
+//    public void foo(){
+//        this.get("NL555").checkPin("1234");
+//    }
+//      
     public boolean bestaat(String o){
                boolean x = false;
                x=  accounts.containsKey(o);
