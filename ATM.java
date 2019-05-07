@@ -21,20 +21,18 @@ import java.util.concurrent.TimeUnit;
  * @author Jarno
  */
 public class ATM {
- 
 
     ATMScreen as;
     DisplayText displayText;
     String cardNumber;
     private Bank bank;
-    
-    String inputPin ="";
-    boolean transactionComplete = false;
-    String WithdrawString="";
-    int WithdrawInt;
-    String UserWantsReciept="";
-    String UserWantsRecieptCompare="";
 
+    String inputPin = "";
+    boolean transactionComplete = false;
+    String WithdrawString = "";
+    int WithdrawInt;
+    String UserWantsReciept = "";
+    String UserWantsRecieptCompare = "";
 
     public ATM(Bank b) throws InterruptedException {
         bank = b;
@@ -47,60 +45,59 @@ public class ATM {
         f.setVisible(true);
         doTransaction();
 
-    } 
-    public void doTransaction() throws InterruptedException{
-///////////////////////////////////////////////////////////////////////////////////////////////////
+    }
+
+    public void doTransaction() throws InterruptedException {
+
         displayText = new DisplayText("Display", new Point(0, 0));
-        while(true){
-        as.add(displayText);
-        displayText.giveOutput("Steek uw pas in de atm");
-        CardReader cardReader = new CardReader("CardReader");
+        while (true) {
+            as.add(displayText);
+            displayText.giveOutput("Steek uw pas in de atm");
+            CardReader cardReader = new CardReader("CardReader");
 
+            //Via de arraylists kan makkelijk gekeken worden of een van de knoppen is ingedrukt.
+            ArrayList<InputDevice> KeypadButtons = new ArrayList<>();
+            ArrayList<InputDevice> CashAmmountButtons = new ArrayList<>();
+            ArrayList<InputDevice> RecieptButtons = new ArrayList<>();
 
-//////////////////////////////////////////////////////////////////////////////////////////////////
-        //Via de arraylists kan makkelijk gekeken worden of een van de knoppen is ingedrukt.
-        ArrayList<InputDevice> KeypadButtons = new ArrayList<>();
-        ArrayList<InputDevice> CashAmmountButtons = new ArrayList<>();
-        ArrayList<InputDevice> RecieptButtons = new ArrayList<>();
-//////////////////////////////////////////////////////////////////////////////////////////////////
-        //instances maken van alle buttons
-        ScreenButton button1 = new ScreenButton("1", new Point(180, 130));
-        ScreenButton button2 = new ScreenButton("2", new Point(210, 130));
-        ScreenButton button3 = new ScreenButton("3", new Point(240, 130));
-        ScreenButton button4 = new ScreenButton("4", new Point(180, 160));
-        ScreenButton button5 = new ScreenButton("5", new Point(210, 160));
-        ScreenButton button6 = new ScreenButton("6", new Point(240, 160));
-        ScreenButton button7 = new ScreenButton("7", new Point(180, 190));
-        ScreenButton button8 = new ScreenButton("8", new Point(210, 190));
-        ScreenButton button9 = new ScreenButton("9", new Point(240, 190));
-        ScreenButton button0 = new ScreenButton("0", new Point(210, 220));
-        ScreenButton button20 = new ScreenButton("20", new Point(20, 70));
-        ScreenButton button50 = new ScreenButton("50", new Point(100, 70));
-        ScreenButton button100 = new ScreenButton("100", new Point(20, 100));
-        ScreenButton button200 = new ScreenButton("200", new Point(100, 100));
-        ScreenButton buttonJA = new ScreenButton("JA", new Point(30, 80));
-        ScreenButton buttonNEE = new ScreenButton("NEE", new Point(100, 80));
-//////////////////////////////////////////////////////////////////////////////////////////////////
-        //toevoegen van alle knoppen aan bijbehorende arraylists
-        KeypadButtons.add(button1);
-        KeypadButtons.add(button2);
-        KeypadButtons.add(button3);
-        KeypadButtons.add(button4);
-        KeypadButtons.add(button5);
-        KeypadButtons.add(button6);
-        KeypadButtons.add(button7);
-        KeypadButtons.add(button8);
-        KeypadButtons.add(button9);
-        KeypadButtons.add(button0);
-////////////////////////////////////////////////////////////////////////////////////////////////
-        CashAmmountButtons.add(button20);
-        CashAmmountButtons.add(button50);
-        CashAmmountButtons.add(button100);
-        CashAmmountButtons.add(button200);
-///////////////////////////////////////////////////////////////////////////////////////////////
-        RecieptButtons.add(buttonJA);
-        RecieptButtons.add(buttonNEE);
-/////////////////////////////////////////////////////////////////////////////////////////
+            //instances maken van alle buttons
+            ScreenButton button1 = new ScreenButton("1", new Point(180, 130));
+            ScreenButton button2 = new ScreenButton("2", new Point(210, 130));
+            ScreenButton button3 = new ScreenButton("3", new Point(240, 130));
+            ScreenButton button4 = new ScreenButton("4", new Point(180, 160));
+            ScreenButton button5 = new ScreenButton("5", new Point(210, 160));
+            ScreenButton button6 = new ScreenButton("6", new Point(240, 160));
+            ScreenButton button7 = new ScreenButton("7", new Point(180, 190));
+            ScreenButton button8 = new ScreenButton("8", new Point(210, 190));
+            ScreenButton button9 = new ScreenButton("9", new Point(240, 190));
+            ScreenButton button0 = new ScreenButton("0", new Point(210, 220));
+            ScreenButton button20 = new ScreenButton("20", new Point(20, 70));
+            ScreenButton button50 = new ScreenButton("50", new Point(100, 70));
+            ScreenButton button100 = new ScreenButton("100", new Point(20, 100));
+            ScreenButton button200 = new ScreenButton("200", new Point(100, 100));
+            ScreenButton buttonJA = new ScreenButton("JA", new Point(30, 80));
+            ScreenButton buttonNEE = new ScreenButton("NEE", new Point(100, 80));
+
+            //toevoegen van alle knoppen aan bijbehorende arraylists
+            KeypadButtons.add(button1);
+            KeypadButtons.add(button2);
+            KeypadButtons.add(button3);
+            KeypadButtons.add(button4);
+            KeypadButtons.add(button5);
+            KeypadButtons.add(button6);
+            KeypadButtons.add(button7);
+            KeypadButtons.add(button8);
+            KeypadButtons.add(button9);
+            KeypadButtons.add(button0);
+
+            CashAmmountButtons.add(button20);
+            CashAmmountButtons.add(button50);
+            CashAmmountButtons.add(button100);
+            CashAmmountButtons.add(button200);
+
+            RecieptButtons.add(buttonJA);
+            RecieptButtons.add(buttonNEE);
+
             as.add(button1);
             as.add(button2);
             as.add(button3);
@@ -111,11 +108,10 @@ public class ATM {
             as.add(button8);
             as.add(button9);
             as.add(button0);
-            
-        
+
             try {
                 cardNumber = cardReader.getInput();
-                
+
                 while (bank.get(cardNumber) == null) {
 //                    System.out.println("That card number does not exist, try again...");
                     cardNumber = cardReader.getInput();
@@ -124,7 +120,7 @@ public class ATM {
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
-///////////////////////////////////////////////////////////////////////
+
             as.add(button1);
             as.add(button2);
             as.add(button3);
@@ -135,7 +131,7 @@ public class ATM {
             as.add(button8);
             as.add(button9);
             as.add(button0);
-////////////////////////////////////////////////////////////////////////////
+
             displayText.giveOutput("Voer uw pin in");
             System.out.println("Voer uw pin in");
 
@@ -164,7 +160,7 @@ public class ATM {
                         displayText.giveOutput("Incorrecte Pin");
                         TimeUnit.SECONDS.sleep(10);
                         displayText.giveOutput("");
-                        
+
                     }
                     inputPin = "";
                     X = "";
@@ -187,13 +183,12 @@ public class ATM {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            //////////////////////////////////////////////////////////////////////////////////////////////
+
             bank.get(cardNumber);
             System.out.println("U bent ingelogd");
 
             //verwijdert alle vorige schermelementen
             as.clear();
-///////////////////////////////////////////////////////////////////////////////////////////
 
             displayText.giveOutput("Kies hier hoeveel u wil pinnen");
 
@@ -206,11 +201,8 @@ public class ATM {
 
             System.out.println("Kies hoeveelheid...");
 
-
 //            System.out.println(userPin);
             //Hier blijven alle elementen op het scherm totdat de gebruiker een keuze maakt.
-         
-          
             while (transactionComplete == false) {
                 for (InputDevice i : CashAmmountButtons) {
                     String UserWithdrawAmount = i.getInput();
@@ -222,7 +214,7 @@ public class ATM {
                             System.out.println("U heeft niet genoeg geld...");
                         } else if (Integer.parseInt(bank.get(cardNumber).getBalance(inputPin)) >= WithdrawInt) {
                             bank.get(cardNumber).withdraw(WithdrawInt, inputPin);
-                            System.out.println(Integer.parseInt(bank.get(cardNumber).getBalance(inputPin)));    
+                            System.out.println(Integer.parseInt(bank.get(cardNumber).getBalance(inputPin)));
                             transactionComplete = true;
                             inputPin = "";
                         }
@@ -245,10 +237,9 @@ public class ATM {
                     if (UserWantsRecieptCompare != null) {
                         if (UserWantsRecieptCompare == "JA") {
                             as.clear();
-                            System.out.println("////////////////////////");
+                            System.out.println("BONN");
                             System.out.println("Datum: " + formattedDate);
                             System.out.println("Hoeveelheid: " + WithdrawInt);
-                            System.out.println("/////////////////////////");
                             displayText.giveOutput("Nu aan het pakken $ " + WithdrawInt);
                             as.add(displayText);
                             TimeUnit.SECONDS.sleep(4);
@@ -284,15 +275,13 @@ public class ATM {
             UserWantsRecieptCompare = "";
             UserWantsReciept = "";
             transactionComplete = false;
-            
-            inputPin ="";
-            transactionComplete = false;    
-            WithdrawString="";
-            WithdrawInt= 0;
-            UserWantsReciept="";
-            UserWantsRecieptCompare="";
+
+            inputPin = "";
+            transactionComplete = false;
+            WithdrawString = "";
+            WithdrawInt = 0;
+            UserWantsReciept = "";
+            UserWantsRecieptCompare = "";
         }
     }
 }
-
-

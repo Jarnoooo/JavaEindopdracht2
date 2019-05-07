@@ -34,7 +34,7 @@ public class ScreenButton extends ScreenElement implements InputDevice, ActionLi
         if (inputAvailable == true)
         {
             inputAvailable = false;
-            System.out.println("era");
+//            System.out.println("era");
             return button.getLabel();
         }
         else
@@ -50,6 +50,5 @@ public class ScreenButton extends ScreenElement implements InputDevice, ActionLi
     public void actionPerformed(ActionEvent e)
     {
         inputAvailable = true;
-//        getInput();
     }
 }
